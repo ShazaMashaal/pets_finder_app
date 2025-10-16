@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
     final response = await _homeRepo.getBreeds();
     response.when(
       success: (breedsModelList) {
-        breedsList = breedsModelList ?? [];
+        breedsList = breedsModelList;
 
         emit(HomeState.breedsSuccess(breedsModelList));
       },
