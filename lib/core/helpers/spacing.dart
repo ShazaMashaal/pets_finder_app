@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-SizedBox verticalSpace(double height) => SizedBox(
-      height: height.h,
-    );
+class VerticalSpace extends StatelessWidget {
+  final double height;
+  const VerticalSpace(this.height, {super.key});
 
-SizedBox horizontalSpace(double width) => SizedBox(
-      width: width.w,
-    );
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: height.h);
+  }
+}
+
+class HorizontalSpace extends StatelessWidget {
+  final double width;
+  const HorizontalSpace(this.width, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(width: width.w);
+  }
+}
+
+//
+// SizedBox verticalSpace(double height) => SizedBox(height: height.h);
+//
+// SizedBox horizontalSpace(double width) => SizedBox(width: width.w);

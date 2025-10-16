@@ -20,19 +20,19 @@ class OnboardingScreen extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset("assets/images/onboarding_image.png"),
-                verticalSpace(70),
+                VerticalSpace(70),
                 Text(
                   "Find Your Best Companion With Us",
                   style: TextStyles.font32BlackBold,
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(10),
+                VerticalSpace(10),
                 Text(
                   "Join & discover the best suitable pets as per your preferences in your location",
                   style: TextStyles.font16GreyRegular,
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(60),
+                VerticalSpace(60),
                 AppTextButton(
                   buttonText: "Get started",
                   borderRadius: 30.r,
