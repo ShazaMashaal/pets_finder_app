@@ -1,6 +1,6 @@
 # pets_finder_app
 
-A new Flutter project.
+A Flutter app that allows users to view available pets, add them to favorites, and search or filter by breed.
 
 ## Getting Started
 
