@@ -15,6 +15,10 @@ abstract class ApiService {
 
   @GET(ApiConstants.pets)
   Future<List<PetModel>> getPetsByBreedId(@Query("breed_ids") String breedId);
+
+  @GET("${ApiConstants.petDetails}{id}")
+  Future<PetModel> getPetDetails(@Path("id") String id);
+
   // @POST(ApiConstants.breeds)
   // Future<LoginResponse> getBreeds(
   //   @Body() LoginRequestBody loginRequestBody,

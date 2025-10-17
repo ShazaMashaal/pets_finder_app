@@ -4,6 +4,8 @@ import 'package:pets_finder_app/core/di/dependency_injection.dart';
 import 'package:pets_finder_app/core/routing/routes.dart';
 import 'package:pets_finder_app/features/home/logic/home_cubit.dart';
 import 'package:pets_finder_app/features/home/ui/home_screen.dart';
+import 'package:pets_finder_app/features/pet_details/logic/pet_details_cubit.dart';
+import 'package:pets_finder_app/features/pet_details/ui/pet_details_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 
 class AppRouter {
@@ -18,6 +20,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => HomeCubit(getIt())..getBreeds(),
             child: HomeScreen(),
+          ),
+        );
+      case Routes.petDetailsScreen:
+        final id = arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => PetDetailsCubit(getIt())..getPetDetails(id),
+            child: PetDetailsScreen(id: id),
           ),
         );
 
