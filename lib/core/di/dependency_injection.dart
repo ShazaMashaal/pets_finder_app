@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pets_finder_app/features/home/data/repos/home_repo.dart';
 import 'package:pets_finder_app/features/home/logic/home_cubit.dart';
+import 'package:pets_finder_app/features/pet_details/logic/pet_details_cubit.dart';
+import '../../features/pet_details/data/repos/pet_details_repo.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 
@@ -12,17 +14,12 @@ Future<void> setupGetIt() async {
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
-  //home
-
-  // // login
-  // getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
-  // getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
-  //
-  // // signup
-  // getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
-  // getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
   //
   // home
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
+
+  //pet details screen
+  getIt.registerLazySingleton<PetDetailsRepo>(() => PetDetailsRepo(getIt()));
+  getIt.registerLazySingleton<PetDetailsCubit>(() => PetDetailsCubit(getIt()));
 }

@@ -3,6 +3,7 @@ class ApiConstants {
 
   static const String breeds = "breeds";
   static const String pets = "images/search";
+  static const String petDetails = "images/";
 }
 
 class ApiErrors {
