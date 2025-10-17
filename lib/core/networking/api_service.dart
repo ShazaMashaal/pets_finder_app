@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pets_finder_app/features/home/data/models/pet_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/home/data/models/breed_model.dart';
@@ -12,6 +13,8 @@ abstract class ApiService {
   @GET(ApiConstants.breeds)
   Future<List<BreedModel>> getBreeds();
 
+  @GET(ApiConstants.pets)
+  Future<List<PetModel>> getPetsByBreedId(@Query("breed_ids") String breedId);
   // @POST(ApiConstants.breeds)
   // Future<LoginResponse> getBreeds(
   //   @Body() LoginRequestBody loginRequestBody,
