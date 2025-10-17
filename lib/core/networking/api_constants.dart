@@ -2,7 +2,7 @@ class ApiConstants {
   static const String apiBaseUrl = "https://api.thecatapi.com/v1/";
 
   static const String breeds = "breeds";
-  // static const String signup = "auth/register";
+  static const String pets = "images/search";
 }
 
 class ApiErrors {

@@ -26,8 +26,14 @@ class _CategoriesSectionState extends State<CategoriesSection> {
         SizedBox(
           height: 35.h,
           child: BlocBuilder<HomeCubit, HomeState>(
+            buildWhen: (previous, current) =>
+                current is BreedsLoading ||
+                current is BreedsSuccess ||
+                current is BreedsError,
             builder: (context, state) {
-              return state.when(
+              final cubit = context.read<HomeCubit>();
+
+              return state.maybeWhen(
                 initial: () => const Center(child: Text('Initial State')),
                 breedsLoading: () =>
                     const Center(child: CircularProgressIndicator()),
@@ -38,7 +44,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
                     itemBuilder: (context, index) {
                       final breed = breeds?[index];
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () => cubit.changeIndex(index),
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 12.w,
@@ -47,12 +53,19 @@ class _CategoriesSectionState extends State<CategoriesSection> {
                           margin: EdgeInsetsDirectional.only(end: 4.w),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.r),
-                            color: ColorsManager.lightGreen,
+                            color: cubit.selectedIndex == index
+                                ? ColorsManager.blueGreen
+                                : ColorsManager.lightGreen,
                           ),
                           child: Center(
                             child: Text(
                               breed?.name ?? 'No Name',
-                              style: TextStyles.font14BlueGreenSemiBold,
+                              style: TextStyles.font14BlueGreenSemiBold
+                                  .copyWith(
+                                    color: cubit.selectedIndex == index
+                                        ? Colors.white
+                                        : null,
+                                  ),
                             ),
                           ),
                         ),
@@ -61,6 +74,9 @@ class _CategoriesSectionState extends State<CategoriesSection> {
                   );
                 },
                 breedsError: (error) => Center(child: Text('Error: $error')),
+                orElse: () {
+                  return const SizedBox.shrink();
+                },
               );
             },
           ),

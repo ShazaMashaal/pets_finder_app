@@ -55,14 +55,17 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( BreedsLoading value)?  breedsLoading,TResult Function( BreedsSuccess value)?  breedsSuccess,TResult Function( BreedsError value)?  breedsError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( BreedsLoading value)?  breedsLoading,TResult Function( BreedsSuccess value)?  breedsSuccess,TResult Function( BreedsError value)?  breedsError,TResult Function( PetsLoading value)?  petsLoading,TResult Function( PetsSuccess value)?  petsSuccess,TResult Function( PetsError value)?  petsError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case BreedsLoading() when breedsLoading != null:
 return breedsLoading(_that);case BreedsSuccess() when breedsSuccess != null:
 return breedsSuccess(_that);case BreedsError() when breedsError != null:
-return breedsError(_that);case _:
+return breedsError(_that);case PetsLoading() when petsLoading != null:
+return petsLoading(_that);case PetsSuccess() when petsSuccess != null:
+return petsSuccess(_that);case PetsError() when petsError != null:
+return petsError(_that);case _:
   return orElse();
 
 }
@@ -80,14 +83,17 @@ return breedsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( BreedsLoading value)  breedsLoading,required TResult Function( BreedsSuccess value)  breedsSuccess,required TResult Function( BreedsError value)  breedsError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( BreedsLoading value)  breedsLoading,required TResult Function( BreedsSuccess value)  breedsSuccess,required TResult Function( BreedsError value)  breedsError,required TResult Function( PetsLoading value)  petsLoading,required TResult Function( PetsSuccess value)  petsSuccess,required TResult Function( PetsError value)  petsError,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case BreedsLoading():
 return breedsLoading(_that);case BreedsSuccess():
 return breedsSuccess(_that);case BreedsError():
-return breedsError(_that);case _:
+return breedsError(_that);case PetsLoading():
+return petsLoading(_that);case PetsSuccess():
+return petsSuccess(_that);case PetsError():
+return petsError(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +110,17 @@ return breedsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( BreedsLoading value)?  breedsLoading,TResult? Function( BreedsSuccess value)?  breedsSuccess,TResult? Function( BreedsError value)?  breedsError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( BreedsLoading value)?  breedsLoading,TResult? Function( BreedsSuccess value)?  breedsSuccess,TResult? Function( BreedsError value)?  breedsError,TResult? Function( PetsLoading value)?  petsLoading,TResult? Function( PetsSuccess value)?  petsSuccess,TResult? Function( PetsError value)?  petsError,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case BreedsLoading() when breedsLoading != null:
 return breedsLoading(_that);case BreedsSuccess() when breedsSuccess != null:
 return breedsSuccess(_that);case BreedsError() when breedsError != null:
-return breedsError(_that);case _:
+return breedsError(_that);case PetsLoading() when petsLoading != null:
+return petsLoading(_that);case PetsSuccess() when petsSuccess != null:
+return petsSuccess(_that);case PetsError() when petsError != null:
+return petsError(_that);case _:
   return null;
 
 }
@@ -128,13 +137,16 @@ return breedsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  breedsLoading,TResult Function( List<BreedModel?>? breedsList)?  breedsSuccess,TResult Function( ErrorHandler errorHandler)?  breedsError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  breedsLoading,TResult Function( List<BreedModel?>? breedsList)?  breedsSuccess,TResult Function( ErrorHandler errorHandler)?  breedsError,TResult Function()?  petsLoading,TResult Function( List<PetModel?>? petsList)?  petsSuccess,TResult Function( ErrorHandler errorHandler)?  petsError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case BreedsLoading() when breedsLoading != null:
 return breedsLoading();case BreedsSuccess() when breedsSuccess != null:
 return breedsSuccess(_that.breedsList);case BreedsError() when breedsError != null:
-return breedsError(_that.errorHandler);case _:
+return breedsError(_that.errorHandler);case PetsLoading() when petsLoading != null:
+return petsLoading();case PetsSuccess() when petsSuccess != null:
+return petsSuccess(_that.petsList);case PetsError() when petsError != null:
+return petsError(_that.errorHandler);case _:
   return orElse();
 
 }
@@ -152,13 +164,16 @@ return breedsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  breedsLoading,required TResult Function( List<BreedModel?>? breedsList)  breedsSuccess,required TResult Function( ErrorHandler errorHandler)  breedsError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  breedsLoading,required TResult Function( List<BreedModel?>? breedsList)  breedsSuccess,required TResult Function( ErrorHandler errorHandler)  breedsError,required TResult Function()  petsLoading,required TResult Function( List<PetModel?>? petsList)  petsSuccess,required TResult Function( ErrorHandler errorHandler)  petsError,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case BreedsLoading():
 return breedsLoading();case BreedsSuccess():
 return breedsSuccess(_that.breedsList);case BreedsError():
-return breedsError(_that.errorHandler);case _:
+return breedsError(_that.errorHandler);case PetsLoading():
+return petsLoading();case PetsSuccess():
+return petsSuccess(_that.petsList);case PetsError():
+return petsError(_that.errorHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +190,16 @@ return breedsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  breedsLoading,TResult? Function( List<BreedModel?>? breedsList)?  breedsSuccess,TResult? Function( ErrorHandler errorHandler)?  breedsError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  breedsLoading,TResult? Function( List<BreedModel?>? breedsList)?  breedsSuccess,TResult? Function( ErrorHandler errorHandler)?  breedsError,TResult? Function()?  petsLoading,TResult? Function( List<PetModel?>? petsList)?  petsSuccess,TResult? Function( ErrorHandler errorHandler)?  petsError,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case BreedsLoading() when breedsLoading != null:
 return breedsLoading();case BreedsSuccess() when breedsSuccess != null:
 return breedsSuccess(_that.breedsList);case BreedsError() when breedsError != null:
-return breedsError(_that.errorHandler);case _:
+return breedsError(_that.errorHandler);case PetsLoading() when petsLoading != null:
+return petsLoading();case PetsSuccess() when petsSuccess != null:
+return petsSuccess(_that.petsList);case PetsError() when petsError != null:
+return petsError(_that.errorHandler);case _:
   return null;
 
 }
@@ -385,6 +403,178 @@ class _$BreedsErrorCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
   return _then(BreedsError(
+null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
+as ErrorHandler,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PetsLoading implements HomeState {
+  const PetsLoading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PetsLoading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.petsLoading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PetsSuccess implements HomeState {
+  const PetsSuccess(final  List<PetModel?>? petsList): _petsList = petsList;
+  
+
+ final  List<PetModel?>? _petsList;
+ List<PetModel?>? get petsList {
+  final value = _petsList;
+  if (value == null) return null;
+  if (_petsList is EqualUnmodifiableListView) return _petsList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PetsSuccessCopyWith<PetsSuccess> get copyWith => _$PetsSuccessCopyWithImpl<PetsSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PetsSuccess&&const DeepCollectionEquality().equals(other._petsList, _petsList));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_petsList));
+
+@override
+String toString() {
+  return 'HomeState.petsSuccess(petsList: $petsList)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PetsSuccessCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory $PetsSuccessCopyWith(PetsSuccess value, $Res Function(PetsSuccess) _then) = _$PetsSuccessCopyWithImpl;
+@useResult
+$Res call({
+ List<PetModel?>? petsList
+});
+
+
+
+
+}
+/// @nodoc
+class _$PetsSuccessCopyWithImpl<$Res>
+    implements $PetsSuccessCopyWith<$Res> {
+  _$PetsSuccessCopyWithImpl(this._self, this._then);
+
+  final PetsSuccess _self;
+  final $Res Function(PetsSuccess) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? petsList = freezed,}) {
+  return _then(PetsSuccess(
+freezed == petsList ? _self._petsList : petsList // ignore: cast_nullable_to_non_nullable
+as List<PetModel?>?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PetsError implements HomeState {
+  const PetsError(this.errorHandler);
+  
+
+ final  ErrorHandler errorHandler;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PetsErrorCopyWith<PetsError> get copyWith => _$PetsErrorCopyWithImpl<PetsError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PetsError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorHandler);
+
+@override
+String toString() {
+  return 'HomeState.petsError(errorHandler: $errorHandler)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PetsErrorCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory $PetsErrorCopyWith(PetsError value, $Res Function(PetsError) _then) = _$PetsErrorCopyWithImpl;
+@useResult
+$Res call({
+ ErrorHandler errorHandler
+});
+
+
+
+
+}
+/// @nodoc
+class _$PetsErrorCopyWithImpl<$Res>
+    implements $PetsErrorCopyWith<$Res> {
+  _$PetsErrorCopyWithImpl(this._self, this._then);
+
+  final PetsError _self;
+  final $Res Function(PetsError) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
+  return _then(PetsError(
 null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
 as ErrorHandler,
   ));

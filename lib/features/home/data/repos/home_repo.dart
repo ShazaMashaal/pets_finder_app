@@ -1,4 +1,5 @@
 import 'package:pets_finder_app/features/home/data/models/breed_model.dart';
+import 'package:pets_finder_app/features/home/data/models/pet_model.dart';
 
 import '../../../../core/networking/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
@@ -12,6 +13,15 @@ class HomeRepo {
   Future<ApiResult<List<BreedModel>>> getBreeds() async {
     try {
       final response = await _apiService.getBreeds();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<List<PetModel>>> getPetsByBreedId(breedId) async {
+    try {
+      final response = await _apiService.getPetsByBreedId(breedId);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));
