@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pets_finder_app/core/helpers/extensions.dart';
 
 class PetImage extends StatelessWidget {
   final String url;
@@ -31,7 +32,10 @@ class PetImage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset("assets/svgs/back_arrow_icon.svg"),
+              GestureDetector(
+                onTap: context.pop,
+                child: SvgPicture.asset("assets/svgs/back_arrow_icon.svg"),
+              ),
               SvgPicture.asset("assets/svgs/fill_heart_icon.svg"),
             ],
           ),
