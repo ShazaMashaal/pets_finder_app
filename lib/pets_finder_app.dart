@@ -21,7 +21,7 @@ class PetsFinderApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: Routes.mainLayout,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

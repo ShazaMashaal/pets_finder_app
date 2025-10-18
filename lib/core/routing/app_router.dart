@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_finder_app/core/di/dependency_injection.dart';
 import 'package:pets_finder_app/core/routing/routes.dart';
+import 'package:pets_finder_app/core/widgets/main_layout.dart';
+import 'package:pets_finder_app/features/favorites/logic/favorites_cubit.dart';
+import 'package:pets_finder_app/features/favorites/ui/favorites_screen.dart';
 import 'package:pets_finder_app/features/home/logic/home_cubit.dart';
 import 'package:pets_finder_app/features/home/ui/home_screen.dart';
 import 'package:pets_finder_app/features/pet_details/logic/pet_details_cubit.dart';
@@ -13,6 +16,9 @@ class AppRouter {
     //this arguments to be passed in any screen like this ( arguments as ClassName )
     final arguments = settings.arguments;
     switch (settings.name) {
+      case Routes.mainLayout:
+        return MaterialPageRoute(builder: (_) => const MainLayout());
+
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.homeScreen:
@@ -28,6 +34,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => PetDetailsCubit(getIt())..getPetDetails(id),
             child: PetDetailsScreen(id: id),
+          ),
+        );
+      case Routes.favoritesScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => FavoritesCubit(getIt()..getFavorites()),
+            child: FavoritesScreen(),
           ),
         );
 
